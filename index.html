@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body style="padding: 0; height: 100vh; background-color: black; color: #aaa;">
+    <input type="number" name="a" />
+    <select name="operation">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">x</option>
+      <option value="/">÷</option>
+    </select>
+    <input type="number" name="b" />
+
+    <button type="button" name="button" onclick="calculate()">=</button>
+
+    <span id="result"></span>
+
+    <script>
+      let a = document.querySelector('[name="a"]')
+      let b = document.querySelector('[name="b"]')
+      let operation = document.querySelector('[name="operation"]')
+      let result = document.querySelector('#result')
+
+      const operations = {
+        '+': (a, b) => a + b,
+        '-': (a, b) => a - b,
+        '*': (a, b) => a * b,
+        '/': (a, b) => a / b
+      }
+
+      const calculate = () => {
+        result.textContent = operations[operation.value](parseInt(a.value), parseInt(b.value))
+      }
+    </script>
+  </body>
+</html>
